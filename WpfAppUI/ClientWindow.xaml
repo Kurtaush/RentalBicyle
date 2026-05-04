@@ -15,5 +15,6 @@
             <Button Margin="15" Height="30" Width="100" Content="Аренда"></Button>
         </StackPanel>
         <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="UniformToFill" Grid.Column="1" Source="/Assets/карта.png"/>
+        <Button Grid.Column="1" Height="100" Width="100" Content="ПР КД ЧД" Background="Wheat"/>
     </Grid>
 </Window>
