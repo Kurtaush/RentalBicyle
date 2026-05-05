@@ -134,6 +134,15 @@
     <Compile Include="Annotations\NotifyPropertyChangedInvocator.cs" />
     <Compile Include="Annotations\NotifyPropertyChangedInvocatorAttribute.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
+    <Compile Include="Migrations\202605050407306_InitialCreate.cs" />
+    <Compile Include="Migrations\202605050407306_InitialCreate.Designer.cs">
+      <DependentUpon>202605050407306_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202605052345490_UpdateClientTable.cs" />
+    <Compile Include="Migrations\202605052345490_UpdateClientTable.Designer.cs">
+      <DependentUpon>202605052345490_UpdateClientTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelRentalBicycle.cs" />
     <Compile Include="Model\Bicycle.cs" />
     <Compile Include="Model\Client.cs" />
@@ -221,6 +230,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202605050407306_InitialCreate.resx">
+      <DependentUpon>202605050407306_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202605052345490_UpdateClientTable.resx">
+      <DependentUpon>202605052345490_UpdateClientTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
