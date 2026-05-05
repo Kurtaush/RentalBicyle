@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfAppUI.View;
 
 namespace WpfAppUI
 {
@@ -23,6 +24,22 @@ namespace WpfAppUI
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void Login_Click(object sender, RoutedEventArgs
+e)
+        {
+            AuthRegWindow wLogin = new AuthRegWindow();
+            wLogin.Auth.SelectedIndex = 0;   
+            wLogin.Show();
+        }
+
+        private void Registr_Click(object sender, RoutedEventArgs
+e)
+        {
+            AuthRegWindow wLogin = new AuthRegWindow();
+            wLogin.Auth.SelectedIndex = 1;
+            wLogin.Show();
         }
     }
 }
