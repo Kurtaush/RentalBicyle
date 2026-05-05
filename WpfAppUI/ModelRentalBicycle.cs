@@ -20,31 +20,31 @@
                 : base("name=ModelRentalBicycle")
             {
             if (!this.Users.Any(u => u.Role == "admin"))
-            {
-                this.Users.Add(new User
                 {
-                    Login = "admin",
-                    PasswordHash = GetHash("admin123"),
-                    Role = "admin"
-                });
-                this.SaveChanges();
-            }
+                    this.Users.Add(new User
+                    {
+                        Login = "admin",
+                        PasswordHash = GetHash("admin123"),
+                        Role = "admin"
+                    });
+                    this.SaveChanges();
+                }
 
-        }
-        private string GetHash(string password)
-        {
-            using (var sha256 = SHA256.Create())
+            }
+            private string GetHash(string password)
             {
-                var bytes = Encoding.UTF8.GetBytes(password);
-                var hash = sha256.ComputeHash(bytes);
-                return Convert.ToBase64String(hash);
+                using (var sha256 = SHA256.Create())
+                {
+                    var bytes = Encoding.UTF8.GetBytes(password);
+                    var hash = sha256.ComputeHash(bytes);
+                    return Convert.ToBase64String(hash);
+                }
             }
-        }
 
-        // Добавьте DbSet для каждого типа сущности, который требуется включить в модель. Дополнительные сведения 
-        // о настройке и использовании модели Code First см. в статье http://go.microsoft.com/fwlink/?LinkId=390109.
+            // Добавьте DbSet для каждого типа сущности, который требуется включить в модель. Дополнительные сведения 
+            // о настройке и использовании модели Code First см. в статье http://go.microsoft.com/fwlink/?LinkId=390109.
 
-        public virtual DbSet<Bicycle> Bicycles { get; set; }
+            public virtual DbSet<Bicycle> Bicycles { get; set; }
             public virtual DbSet<Client> Clients { get; set; }
             public virtual DbSet<Payment> Payments { get; set; }
             public virtual DbSet<Rental> Rentals { get; set; }
