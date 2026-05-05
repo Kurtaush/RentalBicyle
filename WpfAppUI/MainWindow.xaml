@@ -5,51 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI"
         mc:Ignorable="d"
-        Title="Система аренды велосипедов" Height="450" Width="600">
+        Title="Система аренды велосипедов" Height="450" Width="900">
+    <Window.Resources>
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="LightBlue"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="White">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Button Height="52" Width="52" HorizontalAlignment="Left" VerticalAlignment="Top"></Button>
-        <Border Height="300" Width="300" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TabControl>
-                <TabItem Header="Войти">
-                    <Grid Background="#FFE5E5E5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Height="25" Margin="10"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="10"/>
-                        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Войти" Height="34" Width="68"/>
-                    </Grid>
-                </TabItem>
-                <TabItem Header="Зарегестрироваться">
-                    <Grid Background="#FFE5E5E5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBlock Text="Пароль х2" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <TextBox Grid.Row="0" Grid.Column="1" Height="25" Margin="10"/>
-                        <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="10"/>
-                        <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="10"/>
-                        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Зарегистрироваться" Height="34" Width="123"/>
-                    </Grid>
-                </TabItem>
-            </TabControl>
-        </Border>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="LightSeaGreen">
+            <Canvas>
+                <Ellipse Canvas.Left="35" Canvas.Top="50" Width="125" Height="125" Fill="White"/>
+                <Button Canvas.Left="45" Canvas.Top="10" Height="30" Width="100" Content="Аренда" Background="White"/>
+                <Button Canvas.Left="50" Canvas.Top="300" Height="30" Width="100" Content="Войти"/>
+                <Label Canvas.Left="40" Canvas.Top="350" Height="22" Width="120" FontSize="10" Content="Если у вас нет аккаунта"/>
+                <Button Canvas.Left="25" Canvas.Top="370" Height="20" Width="150" BorderThickness="0" FontSize="12" Foreground="Black" Background="LightGray" Content="Регистрация"/>
+            </Canvas>
+        </StackPanel>
+
+
+
+        <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="UniformToFill" Grid.Column="1" Source="/Assets/карта.png"/>
+
+        <Canvas Grid.Column="1">
+            <Canvas.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource btnStyle}"/>
+            </Canvas.Resources>
+            <Button Canvas.Left="100" Canvas.Top="50" ToolTip="Станция №1">
+                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+            </Button>
+            <Button Canvas.Left="550" Canvas.Top="150">
+                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+            </Button>
+            <Button Canvas.Left="300" Canvas.Top="90">
+                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+            </Button>
+            <Button Canvas.Left="370" Canvas.Top="270">
+                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+            </Button>
+            <Button Canvas.Left="200" Canvas.Top="350">
+                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+            </Button>
+            <Button Canvas.Left="50" Canvas.Top="250">
+                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+            </Button>
+        </Canvas>
+
     </Grid>
 </Window>
