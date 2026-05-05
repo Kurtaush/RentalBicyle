@@ -2,6 +2,9 @@
     using System.Data.Entity;
     using System.Linq;
     using WpfAppUI.Model;
+    using System.Text;
+    using System.Security.Cryptography;
+    using WpfAppUI.View;
 
     namespace WpfAppUI
     {
@@ -16,12 +19,32 @@
             public ModelRentalBicycle()
                 : base("name=ModelRentalBicycle")
             {
+            if (!this.Users.Any(u => u.Role == "admin"))
+            {
+                this.Users.Add(new User
+                {
+                    Login = "admin",
+                    PasswordHash = GetHash("admin123"),
+                    Role = "admin"
+                });
+                this.SaveChanges();
             }
 
-            // Добавьте DbSet для каждого типа сущности, который требуется включить в модель. Дополнительные сведения 
-            // о настройке и использовании модели Code First см. в статье http://go.microsoft.com/fwlink/?LinkId=390109.
+        }
+        private string GetHash(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var bytes = Encoding.UTF8.GetBytes(password);
+                var hash = sha256.ComputeHash(bytes);
+                return Convert.ToBase64String(hash);
+            }
+        }
 
-            public virtual DbSet<Bicycle> Bicycles { get; set; }
+        // Добавьте DbSet для каждого типа сущности, который требуется включить в модель. Дополнительные сведения 
+        // о настройке и использовании модели Code First см. в статье http://go.microsoft.com/fwlink/?LinkId=390109.
+
+        public virtual DbSet<Bicycle> Bicycles { get; set; }
             public virtual DbSet<Client> Clients { get; set; }
             public virtual DbSet<Payment> Payments { get; set; }
             public virtual DbSet<Rental> Rentals { get; set; }

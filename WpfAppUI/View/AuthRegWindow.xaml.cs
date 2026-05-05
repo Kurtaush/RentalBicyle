@@ -54,6 +54,12 @@ namespace WpfAppUI.View
                 }
                 else MessageBox.Show("Неверный логин или пароль");
             }
+            if (CurrentUser.Identity.Role == "admin")
+            {
+                AdminWindow wAdm = new AdminWindow();
+                wAdm.Show();
+                Application.Current.MainWindow.Close();
+            }
         }
 
         private void Register_Click(object sender, RoutedEventArgs e)
