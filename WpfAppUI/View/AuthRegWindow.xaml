@@ -5,8 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI.View"
         mc:Ignorable="d"
-        Title="AuthRegWindow" Height="450" Width="800">
+        Title="Регистрация/Авторизация" Height="450" Width="500">
     <Grid>
-        
+        <Border Height="300" Width="300" BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TabControl>
+                <TabItem Header="Войти">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Height="25" Margin="10"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="10"/>
+                        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Войти" Height="34" Width="68"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Зарегестрироваться">
+                    <Grid Background="#FFE5E5E5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Text="Пароль х2" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Height="25" Margin="10"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="10"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="10"/>
+                        <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Зарегистрироваться" Height="34" Width="123"/>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Border>
     </Grid>
 </Window>
