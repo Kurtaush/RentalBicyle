@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfAppUI.Model;
 
 namespace WpfAppUI
 {
@@ -13,5 +14,9 @@ namespace WpfAppUI
     /// </summary>
     public partial class App : Application
     {
+        public static class CurrentUser
+        {
+            public static User Identity { get; set; }
+        }
     }
 }

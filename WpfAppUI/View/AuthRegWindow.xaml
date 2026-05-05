@@ -5,32 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI.View"
         mc:Ignorable="d"
-        Title="Регистрация/Авторизация" Height="300" Width="300">
+        Title="Регистрация/Авторизация" Height="330" Width="330">
     <Grid>
         <TabControl x:Name="Auth">
             <TabItem Header="Войти">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="105*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="11*"/>
+                        <ColumnDefinition Width="14*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="147*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Height="25" Margin="10"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="10"/>
-                    <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Войти" Height="34" Width="68"/>
+                    <TextBlock Text="Логин" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="57,0,0,0"/>
+                    <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="53,0,0,0"/>
+                    <TextBox x:Name="LoginText" Grid.Row="0" Grid.Column="5" Height="25" Margin="10,30,10,30" AutomationProperties.Name="LoginText"/>
+                    <PasswordBox x:Name="PassText" Grid.Row="1" Grid.Column="5" Height="25" Margin="10,31,10,30" AutomationProperties.Name="PassText"/>
+                    <Button Click="Login_Click" Grid.Row="2" Grid.ColumnSpan="5" Content="Войти" Height="34" Width="68" Margin="8,25,113,26" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Зарегестрироваться">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="28*"/>
+                        <ColumnDefinition Width="120*"/>
+                        <ColumnDefinition Width="147*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -38,13 +43,13 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Text="Логин" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBlock Text="Пароль х2" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    <TextBox Grid.Row="0" Grid.Column="1" Height="25" Margin="10"/>
-                    <TextBox Grid.Row="1" Grid.Column="1" Height="25" Margin="10"/>
-                    <TextBox Grid.Row="2" Grid.Column="1" Height="25" Margin="10"/>
-                    <Button Grid.Row="3" Grid.ColumnSpan="2" Content="Зарегистрироваться" Height="34" Width="123"/>
+                    <TextBlock Text="Логин" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0"/>
+                    <TextBlock Text="Пароль" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="26,0,0,0"/>
+                    <TextBlock Text="Пароль х2" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="18,0,0,0"/>
+                    <TextBox x:Name="RegLoginText" Grid.Row="0" Grid.Column="2" Height="25" Margin="10,20,10,19" AutomationProperties.Name="RegLoginText"/>
+                    <PasswordBox x:Name="RegPassText" Grid.Row="1" Grid.Column="2" Height="25" Margin="10,20,10,19" AutomationProperties.Name="RegPassText"/>
+                    <PasswordBox x:Name="RegPassRepeatText" Grid.Row="2" Grid.Column="2" Height="25" Margin="10,20,10,19" AutomationProperties.Name="RegPassText"/>
+                    <Button Click="Register_Click" Grid.Row="3" Grid.ColumnSpan="2" Content="Зарегистрироваться" Height="34" Width="123" Grid.Column="1" Margin="58,15,86,15"/>
                 </Grid>
             </TabItem>
         </TabControl>

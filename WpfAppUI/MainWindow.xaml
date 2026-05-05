@@ -30,11 +30,27 @@
         </Grid.ColumnDefinitions>
         <StackPanel Background="LightSeaGreen">
             <Canvas>
-                <Ellipse Canvas.Left="35" Canvas.Top="50" Width="125" Height="125" Fill="White"/>
-                <Button Cursor="Hand" Canvas.Left="45" Canvas.Top="10" Height="30" Width="100" Content="Аренда" Background="White"/>
-                <Button Click="Login_Click" Cursor="Hand" Canvas.Left="50" Canvas.Top="300" Height="30" Width="100" Content="Войти"/>
-                <Label Canvas.Left="40" Canvas.Top="350" Height="22" Width="120" FontSize="10" Content="Если у вас нет аккаунта"/>
-                <Button Click="Registr_Click" Cursor="Hand" Canvas.Left="60" Canvas.Top="370" Height="20" Width="80" BorderThickness="0" Background="LightSeaGreen" FontSize="12" Foreground="Blue" Content="Регистрация"/>
+                <Ellipse Canvas.Left="40" Canvas.Top="50" Width="120" Height="125" Fill="White"/>
+                <Button x:Name="btnExitAcc" Click="Logout_Click"  ToolTip="Выйти из аккаунта" Cursor="Hand" Canvas.Left="150" Canvas.Top="10" Height="30" Width="30" Content="🔙" Background="White"/>
+                <StackPanel x:Name="AuthPanel">
+                    <Canvas>
+                        <Button x:Name="btnLogin" Click="Login_Click" Cursor="Hand" Canvas.Left="50" Canvas.Top="300" Height="30" Width="100" Content="Войти"/>
+                        <TextBlock x:Name="textPass" Canvas.Left="40" Canvas.Top="350" Height="22" Width="130" FontSize="12" Text="Если у вас нет аккаунта"/>
+                        <Button x:Name="btnReg" Click="Registr_Click" Cursor="Hand" Canvas.Left="50" Canvas.Top="370" Height="20" Width="100" BorderThickness="0" Background="LightSeaGreen" FontSize="12" Foreground="Blue" Content="Регистрация"/>
+                    </Canvas>
+                </StackPanel>
+                <StackPanel x:Name="ClientPanel">
+                    <Canvas>
+                        <TextBlock x:Name="textInfo" Canvas.Left="35" Canvas.Top="180" Height="40" Width="120" TextAlignment="Center">
+                            Добро пожаловать
+                            <LineBreak/>
+                            sfdjdfjsadkp
+                        </TextBlock>
+                        <Button Cursor="Hand" x:Name="btnBalance" Content="Баланс" Canvas.Left="50" Canvas.Top="240" Height="30" Width="100"/>
+                        <Button Cursor="Hand" x:Name="btnHistory" Content="История" Canvas.Left="50" Canvas.Top="290" Height="30" Width="100"/>
+                        <Button Cursor="Hand" x:Name="btnTariff" Content="Тарифы" Canvas.Left="50" Canvas.Top="340" Height="30" Width="100"/>
+                    </Canvas>
+                </StackPanel>
             </Canvas>
         </StackPanel>
 
