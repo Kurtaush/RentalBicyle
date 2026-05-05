@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="300" Width="300">
+        Title="Админ-панель" Height="300" Width="300">
     <Grid>
         <Menu>
             <MenuItem x:Name="Bicycle" Header="Велосипеды"></MenuItem>

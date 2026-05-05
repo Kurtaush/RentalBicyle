@@ -131,6 +131,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Annotations\NotifyPropertyChangedInvocator.cs" />
+    <Compile Include="Annotations\NotifyPropertyChangedInvocatorAttribute.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
     <Compile Include="ModelRentalBicycle.cs" />
     <Compile Include="Model\Bicycle.cs" />
@@ -173,6 +175,13 @@
     <Compile Include="ViewAdmin\UsersWindow.xaml.cs">
       <DependentUpon>UsersWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BicycleViewModel.cs" />
+    <Compile Include="ViewModel\ClientViewModel.cs" />
+    <Compile Include="ViewModel\PaymentViewModel.cs" />
+    <Compile Include="ViewModel\RentalViewModel.cs" />
+    <Compile Include="ViewModel\StationViewModel.cs" />
+    <Compile Include="ViewModel\TariffViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="View\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -228,14 +237,9 @@
   <ItemGroup>
     <Resource Include="Assets\карта.png" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Assets\метка.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Assets\Метка.png" />
+    <Resource Include="Assets\метка.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

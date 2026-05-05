@@ -63,22 +63,22 @@
                 <Style TargetType="Button" BasedOn="{StaticResource btnStyle}"/>
             </Canvas.Resources>
             <Button Canvas.Left="100" Canvas.Top="50" ToolTip="Станция №1" Cursor="Hand">
-                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+                <Image Source="/Assets/метка.png" Stretch="Uniform"/>
             </Button>
             <Button Canvas.Left="550" Canvas.Top="150" ToolTip="Станция №2" Cursor="Hand">
-                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+                <Image Source="/Assets/метка.png" Stretch="Uniform"/>
             </Button>
             <Button Canvas.Left="300" Canvas.Top="90" ToolTip="Станция №3" Cursor="Hand">
-                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+                <Image Source="/Assets/метка.png" Stretch="Uniform"/>
             </Button>
             <Button Canvas.Left="370" Canvas.Top="270" ToolTip="Станция №4" Cursor="Hand">
-                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+                <Image Source="/Assets/метка.png" Stretch="Uniform"/>
             </Button>
             <Button Canvas.Left="200" Canvas.Top="350" ToolTip="Станция №5" Cursor="Hand">
-                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+                <Image Source="/Assets/метка.png" Stretch="Uniform"/>
             </Button>
             <Button Canvas.Left="50" Canvas.Top="250" ToolTip="Станция №6" Cursor="Hand">
-                <Image Source="/Assets/Метка.png" Stretch="Uniform"/>
+                <Image Source="/Assets/метка.png" Stretch="Uniform"/>
             </Button>
         </Canvas>
 
