@@ -67,6 +67,50 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ViewAdmin\BicyclesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\ClientsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\NewBicycleWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\NewStationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\NewTariffWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\NewUserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\PaymentsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\RentalsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\StationsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\TariffsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\UsersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,6 +140,39 @@
     <Compile Include="Model\Station.cs" />
     <Compile Include="Model\Tariff.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="ViewAdmin\BicyclesWindow.xaml.cs">
+      <DependentUpon>BicyclesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\ClientsWindow.xaml.cs">
+      <DependentUpon>ClientsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\NewBicycleWindow.xaml.cs">
+      <DependentUpon>NewBicycleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\NewStationWindow.xaml.cs">
+      <DependentUpon>NewStationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\NewTariffWindow.xaml.cs">
+      <DependentUpon>NewTariffWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\NewUserWindow.xaml.cs">
+      <DependentUpon>NewUserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\PaymentsWindow.xaml.cs">
+      <DependentUpon>PaymentsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\RentalsWindow.xaml.cs">
+      <DependentUpon>RentalsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\StationsWindow.xaml.cs">
+      <DependentUpon>StationsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\TariffsWindow.xaml.cs">
+      <DependentUpon>TariffsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\UsersWindow.xaml.cs">
+      <DependentUpon>UsersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
