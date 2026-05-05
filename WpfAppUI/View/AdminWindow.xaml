@@ -8,14 +8,14 @@
         Title="Админ-панель" Height="300" Width="300">
     <Grid>
         <Menu>
-            <MenuItem x:Name="Bicycle" Header="Велосипеды"></MenuItem>
-            <MenuItem x:Name="Client" Header="Клиенты"></MenuItem>
-            <MenuItem x:Name="Payment" Header="Платежи"></MenuItem>
-            <MenuItem x:Name="Rental" Header="Аренды"></MenuItem>
-            <MenuItem x:Name="Station" Header="Станции"></MenuItem>
-            <MenuItem x:Name="Tariff" Header="Тарифы"></MenuItem>
-            <MenuItem x:Name="User" Header="Пользователи"></MenuItem>
-            <MenuItem x:Name="Exit" Header="Выход"></MenuItem>
+            <MenuItem x:Name="Bicycle" Header="Велосипеды" Click="Bicycle_Click"></MenuItem>
+            <MenuItem x:Name="Client" Header="Клиенты" Click="Client_Click"></MenuItem>
+            <MenuItem x:Name="Payment" Header="Платежи" Click="Payment_Click"></MenuItem>
+            <MenuItem x:Name="Rental" Header="Аренды" Click="Rental_Click"></MenuItem>
+            <MenuItem x:Name="Station" Header="Станции" Click="Station_Click"></MenuItem>
+            <MenuItem x:Name="Tariff" Header="Тарифы" Click="Tariff_Click"></MenuItem>
+            <MenuItem x:Name="User" Header="Пользователи" Click="User_Click"></MenuItem>
+            <MenuItem x:Name="Exit" Header="Выход" Click="Exit_Click"></MenuItem>
         </Menu>
     </Grid>
 </Window>
