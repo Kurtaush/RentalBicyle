@@ -6,15 +6,48 @@
         xmlns:local="clr-namespace:WpfAppUI"
         mc:Ignorable="d"
         Title="ClientWindow" Height="450" Width="900">
+    <Window.Resources>
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="10" BorderBrush="Black" BorderThickness="1" Background="LightBlue"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Background="LightGray">
-            <Button Margin="15" Height="30" Width="100" Content="Аренддаа"></Button>
+            <Canvas>
+                <Ellipse Canvas.Left="80" Canvas.Top="40" Width="50" Height="50" Fill="White"/>
+                <Button Canvas.Left="55" Height="30" Width="100" Content="Аренддаа"/>
+                <Button Canvas.Left="55" Canvas.Top="300" Height="30" Width="100" Content="Войти"/>
+                <Button Margin="0, 10" Canvas.Left="30" Canvas.Top="330" Height="34" Width="150" BorderThickness="0" FontSize="12" Background="LightGray" Content="Если у вас нет аккаунта&#x0a;          Регистрация"/>
+            </Canvas>
         </StackPanel>
+
+
+
         <Image HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="UniformToFill" Grid.Column="1" Source="/Assets/карта.png"/>
-        <Button Grid.Column="1" Height="100" Width="100" Content="ПР КД Ч!!!Д" Background="Yellow"/>
+        
+        <Canvas Grid.Column="1">
+            <Canvas.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource btnStyle}"/>
+            </Canvas.Resources>
+            <Button Canvas.Left="100" Canvas.Top="50"/>
+            <Button Canvas.Left="550" Canvas.Top="150"/>
+            <Button Canvas.Left="300" Canvas.Top="90"/>
+            <Button Canvas.Left="370" Canvas.Top="270"/>
+            <Button Canvas.Left="200" Canvas.Top="350"/>
+            <Button Canvas.Left="50" Canvas.Top="250"/>
+        </Canvas>
+   
     </Grid>
 </Window>
