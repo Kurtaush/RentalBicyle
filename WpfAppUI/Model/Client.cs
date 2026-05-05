@@ -31,6 +31,11 @@ namespace WpfAppUI.Model
         /// </summary>
         public string Phone { get; set; }
 
+        /// <summary>
+        /// баланс клиента
+        /// </summary>
+        public int Balance { get; set; }
+
         public Client()
         {
             this.Rentals = new HashSet<Rental>();
