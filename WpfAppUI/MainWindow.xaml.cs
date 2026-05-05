@@ -37,7 +37,7 @@ namespace WpfAppUI
                 textPass.Visibility = Visibility.Collapsed;
                 btnBalance.Visibility = Visibility.Collapsed;
                 btnHistory.Visibility = Visibility.Collapsed;
-                btnTariff.Visibility = Visibility.Collapsed;
+                textAbout.Visibility = Visibility.Collapsed;
                 textInfo.Visibility = Visibility.Collapsed;
                 btnExitAcc.Visibility = Visibility.Collapsed;
             
@@ -48,7 +48,7 @@ namespace WpfAppUI
                 {
                     btnBalance.Visibility = Visibility.Visible;
                     btnHistory.Visibility = Visibility.Visible;
-                    btnTariff.Visibility = Visibility.Visible;
+                    textAbout.Visibility = Visibility.Visible;
                     textInfo.Visibility = Visibility.Visible;
                     btnExitAcc.Visibility = Visibility.Visible;
                 }
@@ -65,6 +65,30 @@ namespace WpfAppUI
         {
             CurrentUser.Identity = null;
             UpdateUI();
+        }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Разработчики приложения: \n Деревцов Александр \n Карбушев Владислав");
+        }
+
+        private void Balance_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new ModelRentalBicycle())
+            {
+                var client = db.Clients.FirstOrDefault(c => c.UserId == CurrentUser.Identity.Id);
+                if (client != null)
+                {
+                    int balance = client.Balance;
+                    MessageBox.Show($"Ваш баланс равен: {balance}");
+                }
+
+            }
+        }
+
+        private void History_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Разработчики приложения: \n Деревцов Александр \n Карбушев Владислав");
         }
 
         private void Login_Click(object sender, RoutedEventArgs
