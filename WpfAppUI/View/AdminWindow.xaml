@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="300" Width="300">
     <Grid>
         <Menu>
             <MenuItem x:Name="Bicycle" Header="Велосипеды"></MenuItem>
@@ -15,6 +15,7 @@
             <MenuItem x:Name="Station" Header="Станции"></MenuItem>
             <MenuItem x:Name="Tariff" Header="Тарифы"></MenuItem>
             <MenuItem x:Name="User" Header="Пользователи"></MenuItem>
+            <MenuItem x:Name="Exit" Header="Выход"></MenuItem>
         </Menu>
     </Grid>
 </Window>
