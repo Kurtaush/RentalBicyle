@@ -20,6 +20,7 @@
                         <GridViewColumn Header="UserId" DisplayMemberBinding="{Binding UserId}"/>
                         <GridViewColumn Header="FullName" DisplayMemberBinding="{Binding FullName}"/>
                         <GridViewColumn Header="Phone" DisplayMemberBinding="{Binding Phone}"/>
+                        <GridViewColumn Header="Balance" DisplayMemberBinding="{Binding Balance}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>

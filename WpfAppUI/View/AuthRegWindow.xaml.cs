@@ -58,7 +58,7 @@ namespace WpfAppUI.View
             {
                 AdminWindow wAdm = new AdminWindow();
                 wAdm.Show();
-                Application.Current.MainWindow.Close();
+                Application.Current.MainWindow.Hide();
             }
         }
 

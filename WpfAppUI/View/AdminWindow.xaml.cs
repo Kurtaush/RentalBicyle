@@ -69,7 +69,7 @@ namespace WpfAppUI
 
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.Activate();
+            Application.Current.MainWindow.Show();
         }
     }
 }
