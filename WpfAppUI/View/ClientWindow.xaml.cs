@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfAppUI.ViewModel;
 
 namespace WpfAppUI
 {
@@ -23,11 +24,17 @@ namespace WpfAppUI
         {
             InitializeComponent();
             LoadStation(stationId);
+            DataContext = new RentalViewModel();
         }
 
         private void LoadStation(string id)
         {
             Title = "Станция №" + id;
+        }
+
+        private void Rental_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -8,10 +8,26 @@
         Title="ClientWindow" Height="450" Width="600">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="300"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="330"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
-        <Button Grid.Row="1" Width="150" Height="50" Content="Арендовать"/>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Список аренд"/>
+        <StackPanel Grid.Row="1" Background="#FFD8D8D8">
+            <ListView Height="300" x:Name="lvRole" ItemsSource="{Binding ListRental}" SelectedItem="{Binding SelectedRental, Mode=TwoWay}" Background="#FFD3CDCD">
+                <ListView.View >
+                    <GridView>
+                        <GridView.Columns>
+                            <GridViewColumn Width="100" Header="Модель велика" DisplayMemberBinding="{Binding Bicycle}"/>
+                            <GridViewColumn Width="100" Header="Начало аренды" DisplayMemberBinding="{Binding StartTime}"/>
+                            <GridViewColumn Width="100" Header="Конец аренды" DisplayMemberBinding="{Binding EndTime}"/>
+                            <GridViewColumn Width="50" Header="Тариф" DisplayMemberBinding="{Binding Tariff}"/>
+                        </GridView.Columns>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+        
+        <Button Click="Rental_Click" Grid.Row="2" Width="150" Height="50" Content="Арендовать"/>
     </Grid>
 </Window>
