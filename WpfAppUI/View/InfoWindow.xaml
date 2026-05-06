@@ -1,0 +1,30 @@
+﻿<Window x:Class="WpfAppUI.View.InfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfAppUI.View"
+        mc:Ignorable="d"
+        
+        Title="Личные данные" Height="330" Width="330">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Имя:" FontSize="20"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
+        <TextBlock Grid.Row="1" Text="Номер:" FontSize="20"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
+
+        <TextBox x:Name="NameText" Grid.Row="0" Grid.Column="1" Height="25" Margin="10,30,10,30" AutomationProperties.Name="LoginText"/>
+        <TextBox x:Name="PhoneText" Grid.Row="1" Grid.Column="1" Height="25" Margin="10,30,10,30" AutomationProperties.Name="LoginText"/>
+
+        <Button Click="SaveInfo_Click" Cursor="Hand" Grid.Row="2" Grid.ColumnSpan="2" Width="140" Height="50" Content="Сохранить" FontSize="20"/>
+    </Grid>
+</Window>

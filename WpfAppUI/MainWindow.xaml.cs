@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,6 +31,19 @@ namespace WpfAppUI
             UpdateUI();
         }
 
+        public void LoadName()
+        {
+            if (CurrentUser.Identity == null)
+            {
+                return;
+            }
+            using (var db = new ModelRentalBicycle())
+            {
+                var currentClient = db.Clients.FirstOrDefault(c => c.UserId == CurrentUser.Identity.Id);
+                textInfo.DataContext = currentClient;
+            }
+        }
+
         public void UpdateUI()
         {
                 btnLogin.Visibility = Visibility.Collapsed;
@@ -40,7 +54,8 @@ namespace WpfAppUI
                 textAbout.Visibility = Visibility.Collapsed;
                 textInfo.Visibility = Visibility.Collapsed;
                 btnExitAcc.Visibility = Visibility.Collapsed;
-            
+                btnInfo.Visibility = Visibility.Collapsed;
+
 
             if (CurrentUser.Identity != null)
             {
@@ -51,6 +66,8 @@ namespace WpfAppUI
                     textAbout.Visibility = Visibility.Visible;
                     textInfo.Visibility = Visibility.Visible;
                     btnExitAcc.Visibility = Visibility.Visible;
+                    btnInfo.Visibility = Visibility.Visible;
+                    LoadName();
                 }
             }
             else
@@ -85,10 +102,16 @@ namespace WpfAppUI
 
             }
         }
+        
+        private void Info_Click(object sender, RoutedEventArgs e)
+        {
+            InfoWindow wInfo = new InfoWindow();
+            wInfo.Show();
+        }
 
         private void History_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Разработчики приложения: \n Деревцов Александр \n Карбушев Владислав");
+
         }
 
         private void Login_Click(object sender, RoutedEventArgs

@@ -51,14 +51,15 @@ namespace WpfAppUI.View
                     CurrentUser.Identity = user;
                     ((MainWindow)Application.Current.MainWindow).UpdateUI();
                     this.Close();
+
+                    if (user.Role == "admin")
+                    {
+                        AdminWindow wAdm = new AdminWindow();
+                        wAdm.Show();
+                        Application.Current.MainWindow.Hide();
+                    }
                 }
                 else MessageBox.Show("Неверный логин или пароль");
-            }
-            if (CurrentUser.Identity.Role == "admin")
-            {
-                AdminWindow wAdm = new AdminWindow();
-                wAdm.Show();
-                Application.Current.MainWindow.Hide();
             }
         }
 
