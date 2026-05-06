@@ -34,7 +34,7 @@ namespace WpfAppUI.Model
         /// <summary>
         /// баланс клиента
         /// </summary>
-        public int Balance { get; set; }
+        public decimal Balance { get; set; }
 
         public Client()
         {

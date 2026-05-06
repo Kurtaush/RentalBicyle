@@ -98,10 +98,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ViewAdmin\PaymentsWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="ViewAdmin\RentalsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -141,19 +137,9 @@
     <Compile Include="Annotations\NotifyPropertyChangedInvocator.cs" />
     <Compile Include="Annotations\NotifyPropertyChangedInvocatorAttribute.cs" />
     <Compile Include="Helper\RelayCommand.cs" />
-    <Compile Include="Migrations\202605050407306_InitialCreate.cs" />
-    <Compile Include="Migrations\202605050407306_InitialCreate.Designer.cs">
-      <DependentUpon>202605050407306_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202605052345490_UpdateClientTable.cs" />
-    <Compile Include="Migrations\202605052345490_UpdateClientTable.Designer.cs">
-      <DependentUpon>202605052345490_UpdateClientTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelRentalBicycle.cs" />
     <Compile Include="Model\Bicycle.cs" />
     <Compile Include="Model\Client.cs" />
-    <Compile Include="Model\Payment.cs" />
     <Compile Include="Model\Rental.cs" />
     <Compile Include="Model\Station.cs" />
     <Compile Include="Model\Tariff.cs" />
@@ -179,9 +165,6 @@
     <Compile Include="ViewAdmin\NewUserWindow.xaml.cs">
       <DependentUpon>NewUserWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewAdmin\PaymentsWindow.xaml.cs">
-      <DependentUpon>PaymentsWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewAdmin\RentalsWindow.xaml.cs">
       <DependentUpon>RentalsWindow.xaml</DependentUpon>
     </Compile>
@@ -196,7 +179,6 @@
     </Compile>
     <Compile Include="ViewModel\BicycleViewModel.cs" />
     <Compile Include="ViewModel\ClientViewModel.cs" />
-    <Compile Include="ViewModel\PaymentViewModel.cs" />
     <Compile Include="ViewModel\RentalViewModel.cs" />
     <Compile Include="ViewModel\StationViewModel.cs" />
     <Compile Include="ViewModel\TariffViewModel.cs" />
@@ -251,12 +233,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202605050407306_InitialCreate.resx">
-      <DependentUpon>202605050407306_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202605052345490_UpdateClientTable.resx">
-      <DependentUpon>202605052345490_UpdateClientTable.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

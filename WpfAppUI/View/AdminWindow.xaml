@@ -10,7 +10,6 @@
         <Menu>
             <MenuItem x:Name="Bicycle" Header="Велосипеды" Click="Bicycle_Click"></MenuItem>
             <MenuItem x:Name="Client" Header="Клиенты" Click="Client_Click"></MenuItem>
-            <MenuItem x:Name="Payment" Header="Платежи" Click="Payment_Click"></MenuItem>
             <MenuItem x:Name="Rental" Header="Аренды" Click="Rental_Click"></MenuItem>
             <MenuItem x:Name="Station" Header="Станции" Click="Station_Click"></MenuItem>
             <MenuItem x:Name="Tariff" Header="Тарифы" Click="Tariff_Click"></MenuItem>

@@ -47,14 +47,19 @@ namespace WpfAppUI.Model
         public int? EndStationId { get; set; }
 
         /// <summary>
-        /// стоимость аренды
+        /// код тарифа
         /// </summary>
-        public decimal? Cost { get; set; }
+        public int TariffId { get; set; }
 
-        public Rental()
-        {
-            this.Payments = new HashSet<Payment>();
-        }
+        /// <summary>
+        /// сумма аренды
+        /// </summary>
+        public decimal? Amount { get; set; }
+
+        /// <summary>
+        /// время оплаты
+        /// </summary>
+        public DateTime? PaidAt { get; set; }
 
         /// <summary>
         /// класс клиента для связи с сущностью Client
@@ -75,16 +80,6 @@ namespace WpfAppUI.Model
         /// класс станции окончания для связи с сущностью Station
         /// </summary>
         public virtual Station EndStation { get; set; }
-
-        /// <summary>
-        /// коллекция Payments для связи с классом Payment
-        /// </summary>
-        public virtual ICollection<Payment> Payments { get; set; }
-
-        /// <summary>
-        /// код тарифа
-        /// </summary>
-        public int TariffId { get; set; }
 
         /// <summary>
         /// класс тарифа для связи с сущностью Tariff

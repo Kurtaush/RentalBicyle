@@ -38,12 +38,6 @@ namespace WpfAppUI
             wClient.Show();
         }
 
-        private void Payment_Click(object sender, RoutedEventArgs e)
-        {
-            PaymentsWindow wPayment = new PaymentsWindow();
-            wPayment.Show();
-        }
-
         private void Rental_Click(object sender, RoutedEventArgs e)
         {
             RentalsWindow wRental = new RentalsWindow();

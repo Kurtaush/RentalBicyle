@@ -31,6 +31,11 @@ namespace WpfAppUI.Model
         /// </summary>
         public int? StationId { get; set; }
 
+        /// <summary>
+        /// связь с тарифом
+        /// </summary>
+        public int? TariffId { get; set; }
+        
         public Bicycle()
         {
             this.Rentals = new HashSet<Rental>();
@@ -40,6 +45,11 @@ namespace WpfAppUI.Model
         /// класс станции для связи с сущностью Station
         /// </summary>
         public virtual Station Station { get; set; }
+
+        /// <summary>
+        /// класс тарифа для связи с сущностью Tariff
+        /// </summary>
+        public virtual Tariff Tariff { get; set; }
 
         /// <summary>
         /// коллекция Rentals для связи с классом Rental

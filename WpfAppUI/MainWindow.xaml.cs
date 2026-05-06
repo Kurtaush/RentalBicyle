@@ -96,7 +96,7 @@ namespace WpfAppUI
                 var client = db.Clients.FirstOrDefault(c => c.UserId == CurrentUser.Identity.Id);
                 if (client != null)
                 {
-                    int balance = client.Balance;
+                    decimal balance = client.Balance;
                     MessageBox.Show($"Ваш баланс равен: {balance}");
                 }
 
