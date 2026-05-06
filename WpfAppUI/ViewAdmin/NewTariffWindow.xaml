@@ -17,9 +17,9 @@
             <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Название:" Grid.Row="0" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
-        <TextBlock Text="Цена:" Grid.Row="1" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
+        <TextBlock Text="Цена за час:" Grid.Row="1" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
         <TextBox x:Name="tbName" Text="{Binding Name}" Grid.Row="0" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
-        <TextBox x:Name="tbCost" Text="{Binding Cost}" Grid.Row="1" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
+        <TextBox x:Name="tbPricePerHour" Text="{Binding PricePerHour}" Grid.Row="1" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
         <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource crudButton}" Click="btnSave_Click"/>
             <Button x:Name="btnCancel" Content="Отменить" Style="{StaticResource crudButton}" IsCancel="True"/>

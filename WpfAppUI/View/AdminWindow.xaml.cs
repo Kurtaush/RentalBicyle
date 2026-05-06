@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfAppUI.ViewAdmin;
+using static WpfAppUI.App;
 
 namespace WpfAppUI
 {
@@ -71,6 +72,8 @@ namespace WpfAppUI
         {
             this.Close();
             Application.Current.MainWindow.Show();
+            CurrentUser.Identity = null;
+            ((MainWindow)Application.Current.MainWindow).UpdateUI();
         }
     }
 }

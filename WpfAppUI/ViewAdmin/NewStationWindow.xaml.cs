@@ -26,7 +26,7 @@ namespace WpfAppUI.ViewAdmin
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-
+            DialogResult = true;
         }
     }
 }

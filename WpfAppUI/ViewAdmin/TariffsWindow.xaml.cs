@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfAppUI.ViewModel;
 
 namespace WpfAppUI.ViewAdmin
 {
@@ -22,6 +23,7 @@ namespace WpfAppUI.ViewAdmin
         public TariffsWindow()
         {
             InitializeComponent();
+            DataContext = new TariffViewModel();
         }
     }
 }
