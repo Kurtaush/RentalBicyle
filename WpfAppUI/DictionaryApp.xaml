@@ -6,4 +6,22 @@
         <Setter Property="Control.Padding" Value="5,0,5,0"/>
         <Setter Property="Control.BorderThickness" Value="2"/>
     </Style>
+    <Style x:Key="crudTextBlock" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    <Style x:Key="crudTextBox" TargetType="TextBox">
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Width" Value="130"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+    <Style x:Key="crudButton" TargetType="Button">
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="5,10,10,5"/>
+    </Style>
 </ResourceDictionary>

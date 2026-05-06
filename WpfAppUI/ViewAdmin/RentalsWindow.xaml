@@ -7,10 +7,6 @@
         mc:Ignorable="d"
         Title="Аренды" Height="450" Width="700">
     <StackPanel Background="#FFD8D8D8">
-        <StackPanel Orientation="Horizontal" Background="#FFE4E0E0">
-            <Button x:Name="btnEdit" Style="{StaticResource ButtonMenu}" Content="Редактировать" Command="{Binding EditRental}" Height="25"/>
-            <Button x:Name="btnDelete" Style="{StaticResource ButtonMenu}" Content="Удалить" Command="{Binding DeleteRental}" Height="25"/>
-        </StackPanel>
         <Label Margin="5" HorizontalAlignment="Center">Список аренд</Label>
         <ListView Height="300" x:Name="lvRole" ItemsSource="{Binding ListRental}" SelectedItem="{Binding SelectedRental, Mode=TwoWay}" Background="#FFD3CDCD">
             <ListView.View >

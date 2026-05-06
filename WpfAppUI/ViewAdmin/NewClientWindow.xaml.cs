@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace WpfAppUI.ViewAdmin
 {
     /// <summary>
-    /// Логика взаимодействия для NewTariffWindow.xaml
+    /// Логика взаимодействия для NewClientWindow.xaml
     /// </summary>
-    public partial class NewTariffWindow : Window
+    public partial class NewClientWindow : Window
     {
-        public NewTariffWindow()
+        public NewClientWindow()
         {
             InitializeComponent();
         }

@@ -1,13 +1,14 @@
-﻿<Window x:Class="WpfAppUI.ViewAdmin.NewStationWindow"
+﻿<Window x:Class="WpfAppUI.ViewAdmin.NewClientWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI.ViewAdmin"
         mc:Ignorable="d"
-        Title="NewStationWindow" Height="160" Width="300">
+        Title="NewClientWindow" Height="210" Width="300">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="50*"/>
@@ -16,11 +17,13 @@
             <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Название:" Grid.Row="0" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
-        <TextBlock Text="Адрес:" Grid.Row="1" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
-        <TextBox x:Name="tbName" Text="{Binding Name}" Grid.Row="0" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
-        <TextBox x:Name="tbAddress" Text="{Binding Address}" Grid.Row="1" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
-        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+        <TextBlock Text="Полное имя:" Grid.Row="0" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
+        <TextBlock Text="Номер:" Grid.Row="1" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
+        <TextBlock Text="Баланс:" Grid.Row="2" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
+        <TextBox x:Name="tbFullName" Text="{Binding FullName}" Grid.Row="0" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
+        <TextBox x:Name="tbPhone" Text="{Binding Phone}" Grid.Row="1" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
+        <TextBox x:Name="tbBalance" Text="{Binding Balance}" Grid.Row="2" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource crudButton}" Click="btnSave_Click"/>
             <Button x:Name="btnCancel" Content="Отменить" Style="{StaticResource crudButton}" IsCancel="True"/>
         </StackPanel>

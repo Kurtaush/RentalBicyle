@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI.ViewAdmin"
         mc:Ignorable="d"
-        Title="NewUserWindow" Height="450" Width="800">
+        Title="NewUserWindow" Height="210" Width="300">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="75*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Логин:" Grid.Row="0" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
+        <TextBlock Text="Пароль:" Grid.Row="1" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
+        <TextBlock Text="Роль:" Grid.Row="2" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
+        <TextBox x:Name="tbLogin" Text="{Binding Login}" Grid.Row="0" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
+        <TextBox x:Name="tbPassword" Text="{Binding Password}" Grid.Row="1" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
+        <TextBox x:Name="tbRole" Text="{Binding Role}" Grid.Row="2" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource crudButton}" Click="btnSave_Click"/>
+            <Button x:Name="btnCancel" Content="Отменить" Style="{StaticResource crudButton}" IsCancel="True"/>
+        </StackPanel>
     </Grid>
 </Window>

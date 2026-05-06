@@ -79,6 +79,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ViewAdmin\NewClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ViewAdmin\NewStationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,6 +163,9 @@
     </Compile>
     <Compile Include="ViewAdmin\NewBicycleWindow.xaml.cs">
       <DependentUpon>NewBicycleWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewAdmin\NewClientWindow.xaml.cs">
+      <DependentUpon>NewClientWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewAdmin\NewStationWindow.xaml.cs">
       <DependentUpon>NewStationWindow.xaml</DependentUpon>
