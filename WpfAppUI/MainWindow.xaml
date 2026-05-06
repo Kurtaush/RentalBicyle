@@ -41,13 +41,14 @@
                 </StackPanel>
                 <StackPanel x:Name="ClientPanel">
                     <Canvas>
-                        <TextBlock x:Name="textInfo" Canvas.Left="40" Canvas.Top="180" Height="40" Width="120" TextAlignment="Center">
-                            Добро пожаловать
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="textInfo" Canvas.Left="40" Canvas.Top="180" Height="40" Width="120" TextAlignment="Center">
+                            <Run Text="Добро пожаловать" FontSize="12" />
                             <LineBreak/>
-                            sfdjdfjsadkp
+                            <Run Text="{Binding FullName}" FontWeight="Bold" FontSize="14"/>
                         </TextBlock>
-                        <Button Click="Balance_Click" Cursor="Hand" x:Name="btnBalance" Content="Баланс" Canvas.Left="50" Canvas.Top="240" Height="30" Width="100"/>
-                        <Button Click="History_Click" Cursor="Hand" x:Name="btnHistory" Content="История" Canvas.Left="50" Canvas.Top="290" Height="30" Width="100"/>
+                        <Button Click="Info_Click" Cursor="Hand" x:Name="btnInfo" Content="Заполнить информацию" Canvas.Left="25" Canvas.Top="240" Height="30" Width="150"/>
+                        <Button Click="Balance_Click" Cursor="Hand" x:Name="btnBalance" Content="Баланс" Canvas.Left="50" Canvas.Top="290" Height="30" Width="100"/>
+                        <Button Click="History_Click" Cursor="Hand" x:Name="btnHistory" Content="История" Canvas.Left="50" Canvas.Top="340" Height="30" Width="100"/>
                         <Button Click="About_Click" x:Name="textAbout" Content="О нас" Cursor="Hand" Canvas.Top="380" Height="20" Width="50" BorderThickness="0" Background="LightSeaGreen" FontSize="12" Foreground="Blue"/>
                     </Canvas>
                 </StackPanel>
