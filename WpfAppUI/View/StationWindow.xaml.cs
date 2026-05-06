@@ -12,22 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfAppUI
+namespace WpfAppUI.View
 {
     /// <summary>
-    /// Логика взаимодействия для ClientWindow.xaml
+    /// Логика взаимодействия для StationWindow.xaml
     /// </summary>
-    public partial class ClientWindow : Window
+    public partial class StationWindow : Window
     {
-        public ClientWindow(string stationId)
+        public StationWindow()
         {
             InitializeComponent();
-            LoadStation(stationId);
-        }
-
-        private void LoadStation(string id)
-        {
-            Title = "Станция №" + id;
         }
     }
 }

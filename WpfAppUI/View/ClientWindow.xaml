@@ -7,5 +7,11 @@
         mc:Ignorable="d"
         Title="ClientWindow" Height="450" Width="600">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="1" Width="150" Height="50" Content="Арендовать"/>
     </Grid>
 </Window>

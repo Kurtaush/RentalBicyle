@@ -29,7 +29,6 @@
                     });
                     this.SaveChanges();
                 }
-
             }
             private string GetHash(string password)
             {
