@@ -30,7 +30,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Background="LightSeaGreen">
             <Canvas>
-                <Ellipse Canvas.Left="40" Canvas.Top="50" Width="120" Height="125" Fill="White"/>
+                <Ellipse Canvas.Left="40" Canvas.Top="50" Width="120" Height="120" Fill="White"/>
                 <Button x:Name="btnExitAcc" Click="Logout_Click"  ToolTip="Выйти из аккаунта" Cursor="Hand" Canvas.Left="150" Canvas.Top="10" Height="30" Width="30" Content="🔙" Background="White"/>
                 <StackPanel x:Name="AuthPanel">
                     <Canvas>
@@ -41,10 +41,10 @@
                 </StackPanel>
                 <StackPanel x:Name="ClientPanel">
                     <Canvas>
-                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="textInfo" Canvas.Left="40" Canvas.Top="180" Height="40" Width="120" TextAlignment="Center">
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center" x:Name="textInfo" Canvas.Left="11" Canvas.Top="180" Height="48" Width="178" TextAlignment="Center">
                             <Run Text="Добро пожаловать" FontSize="12" />
                             <LineBreak/>
-                            <Run Text="{Binding FullName}" FontWeight="Bold" FontSize="14"/>
+                            <Run Text="{Binding FullName}" FontWeight="Bold" FontSize="12"/>
                         </TextBlock>
                         <Button Click="Info_Click" Cursor="Hand" x:Name="btnInfo" Content="Заполнить информацию" Canvas.Left="25" Canvas.Top="240" Height="30" Width="150"/>
                         <Button Click="Balance_Click" Cursor="Hand" x:Name="btnBalance" Content="Баланс" Canvas.Left="50" Canvas.Top="290" Height="30" Width="100"/>
