@@ -13,7 +13,7 @@ namespace WpfAppUI.Model
     {
         /// <summary>
         /// код аренды
-        /// </summary>
+        /// </summary>ф
         public int Id { get; set; }
 
         /// <summary>

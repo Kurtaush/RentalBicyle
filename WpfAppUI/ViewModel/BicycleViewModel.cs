@@ -14,6 +14,7 @@ namespace WpfAppUI.ViewModel
     public class BicycleViewModel : INotifyPropertyChanged
     {
         private Bicycle _selectedBicycle;
+        private int? _stationId;
         /// <summary>
         /// выделенный в списке велосипед
         /// </summary>
@@ -38,14 +39,29 @@ namespace WpfAppUI.ViewModel
             ListBicycle = GetBicycles();
         }
 
+        public BicycleViewModel(int stationId)
+        {
+            _stationId = stationId;
+            ListBicycle = new ObservableCollection<Bicycle>();
+            ListBicycle = GetBicycles();
+        }
+
         private ObservableCollection<Bicycle> GetBicycles()
         {
             using (var context = new ModelRentalBicycle())
             {
                 var query = from b in context.Bicycles
                             .Include("Station")
-                            orderby b.Id
+                            .Include("Tariff")
                             select b;
+
+                if (_stationId.HasValue)
+                {
+                    query = query.Where(b => b.StationId == _stationId.Value);
+                }
+
+                query = query.OrderBy(b => b.Id);
+
                 if (query.Count() != 0)
                 {
                     foreach (var b in query)

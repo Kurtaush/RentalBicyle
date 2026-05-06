@@ -14,14 +14,13 @@
         </Grid.RowDefinitions>
         <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Список аренд"/>
         <StackPanel Grid.Row="1" Background="#FFD8D8D8">
-            <ListView Height="300" x:Name="lvRole" ItemsSource="{Binding ListRental}" SelectedItem="{Binding SelectedRental, Mode=TwoWay}" Background="#FFD3CDCD">
+            <ListView Height="300" x:Name="lvRole" ItemsSource="{Binding ListBicycle}" SelectedItem="{Binding SelectedRental, Mode=TwoWay}" Background="#FFD3CDCD">
                 <ListView.View >
                     <GridView>
                         <GridView.Columns>
-                            <GridViewColumn Width="100" Header="Модель велика" DisplayMemberBinding="{Binding Bicycle}"/>
-                            <GridViewColumn Width="100" Header="Начало аренды" DisplayMemberBinding="{Binding StartTime}"/>
-                            <GridViewColumn Width="100" Header="Конец аренды" DisplayMemberBinding="{Binding EndTime}"/>
-                            <GridViewColumn Width="50" Header="Тариф" DisplayMemberBinding="{Binding Tariff}"/>
+                            <GridViewColumn Width="100" Header="Модель велика" DisplayMemberBinding="{Binding Model}"/>
+                            <GridViewColumn Width="100" Header="Статус" DisplayMemberBinding="{Binding Status}"/>
+                            <GridViewColumn Width="50" Header="Тариф" DisplayMemberBinding="{Binding Tariff.PricePerHour}"/>
                         </GridView.Columns>
                     </GridView>
                 </ListView.View>
