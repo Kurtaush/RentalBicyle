@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI.ViewAdmin"
         mc:Ignorable="d"
-        Title="Велосипеды" Height="450" Width="500">
+        Title="Велосипеды" Height="410" Width="500">
     <StackPanel Background="#FFD8D8D8">
         <StackPanel Orientation="Horizontal" Background="#FFE4E0E0">
             <Button x:Name="btnAdd" Style="{StaticResource ButtonMenu}" Content="Добавить" Command="{Binding AddBicycle}" Height="25"/>
             <Button x:Name="btnEdit" Style="{StaticResource ButtonMenu}" Content="Редактировать" Command="{Binding EditBicycle}" Height="25"/>
             <Button x:Name="btnDelete" Style="{StaticResource ButtonMenu}" Content="Удалить" Command="{Binding DeleteBicycle}" Height="25"/>
         </StackPanel>
-        <Label Margin="5" HorizontalAlignment="Center">Список велосипедов</Label>
+        <Label Style="{StaticResource crudLabel}">Список велосипедов</Label>
         <ListView Height="300" x:Name="lvRole" ItemsSource="{Binding ListBicycle}" SelectedItem="{Binding SelectedBicycle, Mode=TwoWay}" Background="#FFD3CDCD">
             <ListView.View >
                 <GridView>

@@ -67,6 +67,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\RouteStat.cs" />
+    <Compile Include="ViewAdmin\RoutePopularityWindow.xaml.cs">
+      <DependentUpon>RoutePopularityWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\RoutePopularityViewModel.cs" />
     <Compile Include="View\StationWindow.xaml.cs">
       <DependentUpon>StationWindow.xaml</DependentUpon>
     </Compile>
@@ -99,6 +104,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewAdmin\RentalsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewAdmin\RoutePopularityWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

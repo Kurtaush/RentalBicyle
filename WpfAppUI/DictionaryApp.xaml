@@ -26,4 +26,9 @@
         <Setter Property="Margin" Value="5,10,10,5"/>
         <Setter Property="Cursor" Value="Hand"/>
     </Style>
+    <Style x:Key="crudLabel" TargetType="Label">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
 </ResourceDictionary>

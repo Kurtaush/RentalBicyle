@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Аренды" Height="450" Width="700">
     <StackPanel Background="#FFD8D8D8">
-        <Label Margin="5" HorizontalAlignment="Center">Список аренд</Label>
+        <Label Style="{StaticResource crudLabel}">Список аренд</Label>
         <ListView Height="300" x:Name="lvRole" ItemsSource="{Binding ListRental}" SelectedItem="{Binding SelectedRental, Mode=TwoWay}" Background="#FFD3CDCD">
             <ListView.View >
                 <GridView>
