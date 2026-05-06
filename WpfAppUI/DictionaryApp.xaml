@@ -5,6 +5,7 @@
         <Setter Property="Control.Margin" Value="10,10,5,10"/>
         <Setter Property="Control.Padding" Value="5,0,5,0"/>
         <Setter Property="Control.BorderThickness" Value="2"/>
+        <Setter Property="Control.Cursor" Value="Hand"/>
     </Style>
     <Style x:Key="crudTextBlock" TargetType="TextBlock">
         <Setter Property="HorizontalAlignment" Value="Right"/>
@@ -23,5 +24,6 @@
         <Setter Property="HorizontalAlignment" Value="Right"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="Margin" Value="5,10,10,5"/>
+        <Setter Property="Cursor" Value="Hand"/>
     </Style>
 </ResourceDictionary>
