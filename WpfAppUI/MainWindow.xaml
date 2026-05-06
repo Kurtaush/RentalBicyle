@@ -52,6 +52,11 @@
                         <Button Click="About_Click" x:Name="textAbout" Content="О нас" Cursor="Hand" Canvas.Top="380" Height="20" Width="50" BorderThickness="0" Background="LightSeaGreen" FontSize="12" Foreground="Blue"/>
                     </Canvas>
                 </StackPanel>
+                <StackPanel x:Name="OperatorPanel">
+                    <Canvas>
+                        <Button Click="Rentals_Click" Cursor="Hand" x:Name="btnRentals" Content="Аренды" Canvas.Left="50" Canvas.Top="290" Height="30" Width="100"/>
+                    </Canvas>
+                </StackPanel>
             </Canvas>
         </StackPanel>
 

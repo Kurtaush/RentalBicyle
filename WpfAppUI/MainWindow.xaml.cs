@@ -55,7 +55,7 @@ namespace WpfAppUI
                 textInfo.Visibility = Visibility.Collapsed;
                 btnExitAcc.Visibility = Visibility.Collapsed;
                 btnInfo.Visibility = Visibility.Collapsed;
-
+                btnRentals.Visibility = Visibility.Collapsed;
 
             if (CurrentUser.Identity != null)
             {
@@ -68,6 +68,11 @@ namespace WpfAppUI
                     btnExitAcc.Visibility = Visibility.Visible;
                     btnInfo.Visibility = Visibility.Visible;
                     LoadName();
+                }
+                if (CurrentUser.Identity.Role == "operator")
+                {
+                    btnExitAcc.Visibility = Visibility.Visible;
+                    btnRentals.Visibility = Visibility.Visible;
                 }
             }
             else
@@ -162,6 +167,20 @@ e)
                 ClientWindow wClient = new ClientWindow(stationId);
                 wClient.Show();
             }
+            
+            if (CurrentUser.Identity.Role == "operator")
+            {
+                Button clickedButton = (Button)sender;
+                string stationId = clickedButton.Tag.ToString();
+                OperatorWindow wOperator = new OperatorWindow(int.Parse(stationId));
+                wOperator.Show();
+            }
+        }
+
+        private void Rentals_Click(object sender, RoutedEventArgs e)
+        {
+            ActiveRentalsWindow wActiveRentals = new ActiveRentalsWindow();
+            wActiveRentals.Show();
         }
     }
 }

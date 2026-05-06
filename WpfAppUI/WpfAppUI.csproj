@@ -72,6 +72,12 @@
       <DependentUpon>RoutePopularityWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\RoutePopularityViewModel.cs" />
+    <Compile Include="View\ActiveRentalsWindow.xaml.cs">
+      <DependentUpon>ActiveRentalsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OperatorWindow.xaml.cs">
+      <DependentUpon>OperatorWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\StationWindow.xaml.cs">
       <DependentUpon>StationWindow.xaml</DependentUpon>
     </Compile>
@@ -120,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewAdmin\UsersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActiveRentalsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,9 +235,6 @@
   <ItemGroup>
     <Compile Include="View\InfoWindow.xaml.cs">
       <DependentUpon>InfoWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\OperatorWindow.xaml.cs">
-      <DependentUpon>OperatorWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
