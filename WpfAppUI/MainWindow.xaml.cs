@@ -122,12 +122,19 @@ e)
             wLogin.Show();
         }
 
-        private void Registr_Click(object sender, RoutedEventArgs
-e)
+        private void Registr_Click(object sender, RoutedEventArgs e)
         {
             AuthRegWindow wLogin = new AuthRegWindow();
             wLogin.Auth.SelectedIndex = 1;
             wLogin.Show();
+        }
+        
+        private void Client_Click(object sender, RoutedEventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            string stationId = clickedButton.Tag.ToString();
+            ClientWindow wClient = new ClientWindow(stationId);
+            wClient.Show();
         }
 
     }

@@ -47,6 +47,7 @@ namespace WpfAppUI.View
                         FullName = NameText.Text,
                         Phone = PhoneText.Text,
                         UserId = CurrentUser.Identity.Id,
+                        Balance = 1000
                     });
                     db.SaveChanges();
                     ((MainWindow)System.Windows.Application.Current.MainWindow).LoadName();
