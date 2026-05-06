@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI.ViewAdmin"
         mc:Ignorable="d"
-        Title="Тарифы" Height="410" Width="500">
+        Title="Тарифы" Height="444" Width="500">
     <StackPanel Background="#FFD8D8D8">
         <StackPanel Orientation="Horizontal" Background="#FFE4E0E0">
             <Button x:Name="btnAdd" Style="{StaticResource ButtonMenu}" Content="Добавить" Command="{Binding AddTariff}" Height="25"/>

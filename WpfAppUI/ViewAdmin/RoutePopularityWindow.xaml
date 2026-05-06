@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI.ViewAdmin"
         mc:Ignorable="d"
-        Title="Популярность маршрутов" Height="360" Width="550">
+        Title="Популярность маршрутов" Height="399" Width="550">
     <StackPanel Background="#FFD8D8D8">
         <Label Style="{StaticResource crudLabel}">
             Самые популярные маршруты

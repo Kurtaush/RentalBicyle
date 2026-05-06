@@ -26,7 +26,43 @@ namespace WpfAppUI.ViewAdmin
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            if (cbStatus.SelectedValue == null)
+            {
+                MessageBox.Show("Выберите статус велосипеда!", "Предупреждение",
+                    MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
             DialogResult = true;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Получаем объект Bicycle из DataContext
+            if (DataContext is Model.Bicycle bicycle)
+            {
+                // Если велосипед в аренде, блокируем ComboBox
+                if (bicycle.Status == "rented")
+                {
+                    cbStatus.IsEnabled = false;
+                }
+                // Если статус не задан (новый велосипед), ставим "free"
+                else if (string.IsNullOrEmpty(bicycle.Status))
+                {
+                    cbStatus.SelectedIndex = 0; // free
+                }
+                else
+                {
+                    // Выбираем текущий статус в ComboBox
+                    foreach (ComboBoxItem item in cbStatus.Items)
+                    {
+                        if (item.Content.ToString() == bicycle.Status)
+                        {
+                            item.IsSelected = true;
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

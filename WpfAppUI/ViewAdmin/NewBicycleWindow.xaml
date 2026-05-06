@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI.ViewAdmin"
         mc:Ignorable="d"
-        Title="NewBicycleWindow" Height="111" Width="300">
+        Title="NewBicycleWindow" Height="160" Width="300"
+        Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
@@ -16,8 +18,13 @@
             <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Модель:" Grid.Row="0" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
+        <TextBlock Text="Статус:" Grid.Row="1" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
         <TextBox x:Name="tbModel" Text="{Binding Model}" Grid.Row="0" Grid.Column="1" Style="{StaticResource crudTextBox}"/>
-        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+        <ComboBox x:Name="cbStatus" Grid.Row="1" Grid.Column="1" SelectedValue="{Binding Status}" SelectedValuePath="Content" Style="{StaticResource crudTextBox}">
+            <ComboBoxItem Content="free"/>
+            <ComboBoxItem Content="maintenance"/>
+        </ComboBox>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button x:Name="btnSave" Content="Сохранить" Style="{StaticResource crudButton}" Click="btnSave_Click"/>
             <Button x:Name="btnCancel" Content="Отменить" Style="{StaticResource crudButton}" IsCancel="True"/>
         </StackPanel>

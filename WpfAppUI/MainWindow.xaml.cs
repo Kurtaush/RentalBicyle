@@ -131,11 +131,37 @@ e)
         
         private void Client_Click(object sender, RoutedEventArgs e)
         {
-            Button clickedButton = (Button)sender;
-            string stationId = clickedButton.Tag.ToString();
-            ClientWindow wClient = new ClientWindow(stationId);
-            wClient.Show();
-        }
+            // Проверяем, что пользователь авторизован
+            if (CurrentUser.Identity == null)
+            {
+                MessageBox.Show("Необходимо авторизоваться!",
+                    "Доступ запрещён", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
+            if (CurrentUser.Identity.Role == "client")
+            {
+                using (var db = new ModelRentalBicycle())
+                {
+                    var client = db.Clients.FirstOrDefault(c => c.UserId == CurrentUser.Identity.Id);
+                    if (client != null)
+                    {
+                        var activeRental = db.Rentals.FirstOrDefault(r => r.ClientId == client.Id && r.EndTime == null);
+                        if (activeRental != null)
+                        {
+                            MessageBox.Show("У вас уже есть активная аренда. Верните велосипед перед тем, как взять новый.",
+                                "Аренда уже активна", MessageBoxButton.OK, MessageBoxImage.Information);
+                            return;
+                        }
+                    }
+                }
+
+                // Если все проверки пройдены — открываем окно
+                Button clickedButton = (Button)sender;
+                string stationId = clickedButton.Tag.ToString();
+                ClientWindow wClient = new ClientWindow(stationId);
+                wClient.Show();
+            }
+        }
     }
 }

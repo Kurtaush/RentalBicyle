@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppUI.ViewAdmin"
         mc:Ignorable="d"
-        Title="Аренды" Height="450" Width="700">
+        Title="Аренды" Height="399" Width="700">
     <StackPanel Background="#FFD8D8D8">
         <Label Style="{StaticResource crudLabel}">Список аренд</Label>
         <ListView Height="300" x:Name="lvRole" ItemsSource="{Binding ListRental}" SelectedItem="{Binding SelectedRental, Mode=TwoWay}" Background="#FFD3CDCD">
