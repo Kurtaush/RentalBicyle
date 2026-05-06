@@ -13,7 +13,7 @@ namespace WpfAppUI
             : base("name=ModelRentalBicycle")
         {
             // Автоматическое создание/обновление БД
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<ModelRentalBicycle>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<ModelRentalBicycle>());
 
             // Заполнение начальными данными, если ещё нет администратора
             if (!this.Users.Any(u => u.Role == "admin"))
