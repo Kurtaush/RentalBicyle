@@ -19,7 +19,7 @@
                         <GridViewColumn Header="EndStationId" DisplayMemberBinding="{Binding EndStationId}"/>
                         <GridViewColumn Header="StartTime" DisplayMemberBinding="{Binding StartTime}"/>
                         <GridViewColumn Header="EndTime" DisplayMemberBinding="{Binding EndTime}"/>
-                        <GridViewColumn Header="Cost" DisplayMemberBinding="{Binding Cost}"/>
+                        <GridViewColumn Header="Amount" DisplayMemberBinding="{Binding Amount}"/>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>

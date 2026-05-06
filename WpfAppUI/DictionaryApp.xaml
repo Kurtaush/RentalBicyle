@@ -11,12 +11,12 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="5"/>
     </Style>
-    <Style x:Key="crudTextBox" TargetType="TextBox">
-        <Setter Property="Height" Value="20"/>
-        <Setter Property="Width" Value="130"/>
-        <Setter Property="HorizontalAlignment" Value="Left"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Margin" Value="5"/>
+    <Style x:Key="crudTextBox">
+        <Setter Property="Control.Height" Value="20"/>
+        <Setter Property="Control.Width" Value="130"/>
+        <Setter Property="Control.HorizontalAlignment" Value="Left"/>
+        <Setter Property="Control.VerticalAlignment" Value="Center"/>
+        <Setter Property="Control.Margin" Value="5"/>
     </Style>
     <Style x:Key="crudButton" TargetType="Button">
         <Setter Property="Height" Value="25"/>

@@ -12,8 +12,8 @@ namespace WpfAppUI
         public ModelRentalBicycle()
             : base("name=ModelRentalBicycle")
         {
-            // Автоматическое создание/обновление БД
-            Database.SetInitializer(new DropCreateDatabaseAlways<ModelRentalBicycle>());
+            // База создаётся однократно и больше не удаляется
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ModelRentalBicycle>());
 
             // Заполнение начальными данными, если ещё нет администратора
             if (!this.Users.Any(u => u.Role == "admin"))
@@ -62,11 +62,9 @@ namespace WpfAppUI
             {
                 var model = bicycleModels[rnd.Next(bicycleModels.Length)];
                 var stationIndex = rnd.Next(6);
-                // Большинство велосипедов свободны, несколько в аренде или на обслуживании
                 var statuses = new[] { "free", "free", "free", "free", "rented", "maintenance" };
                 var status = statuses[rnd.Next(statuses.Length)];
 
-                // Если rented, велосипед временно не привязан к станции (будет привязан позже)
                 var bicycle = new Bicycle
                 {
                     Model = $"{model} {rnd.Next(100, 999)}",
@@ -78,7 +76,6 @@ namespace WpfAppUI
                 };
                 this.Bicycles.Add(bicycle);
 
-                // Для rented временно привяжем к станции, чтобы можно было указать StartStation при аренде
                 if (status == "rented")
                 {
                     bicycle.StationId = stations[stationIndex].Id;
@@ -87,7 +84,6 @@ namespace WpfAppUI
             this.SaveChanges();
 
             // ========== ПОЛЬЗОВАТЕЛИ И КЛИЕНТЫ (10 клиентов) ==========
-            // Админ
             var adminUser = new User
             {
                 Login = "admin",
@@ -96,7 +92,6 @@ namespace WpfAppUI
             };
             this.Users.Add(adminUser);
 
-            // Операторы (2)
             var operator1 = new User
             {
                 Login = "operator1",
@@ -111,7 +106,6 @@ namespace WpfAppUI
             };
             this.Users.AddRange(new[] { operator1, operator2 });
 
-            // Клиенты (10)
             var clientNames = new[]
             {
                 "Иванов Иван Иванович",
@@ -142,7 +136,7 @@ namespace WpfAppUI
                     Role = "client"
                 };
                 this.Users.Add(clientUser);
-                this.SaveChanges(); // чтобы получить clientUser.Id
+                this.SaveChanges();
 
                 var client = new Client
                 {
@@ -167,7 +161,7 @@ namespace WpfAppUI
                 var endStation = stations[rnd.Next(stations.Length)];
 
                 Bicycle bicycle;
-                if (i < 5) // первые 5 аренд останутся активными (не завершены)
+                if (i < 5)
                 {
                     bicycle = rentedBicycles[rnd.Next(rentedBicycles.Count)];
                 }
@@ -188,16 +182,15 @@ namespace WpfAppUI
                     TariffId = tariff.Id
                 };
 
-                if (i >= 5) // завершённые аренды
+                if (i >= 5)
                 {
-                    var endTime = startTime.AddHours(rnd.Next(1, 72)); // максимум 3 дня
+                    var endTime = startTime.AddHours(rnd.Next(1, 72));
                     var hours = Math.Ceiling((endTime - startTime).TotalHours);
                     rental.EndTime = endTime;
                     rental.EndStationId = endStation.Id;
                     rental.Amount = (decimal)hours * tariff.PricePerHour;
-                    rental.PaidAt = endTime.AddMinutes(rnd.Next(5, 60)); // оплата через некоторое время после возврата
+                    rental.PaidAt = endTime.AddMinutes(rnd.Next(5, 60));
                 }
-                // для активных аренд Amount и PaidAt останутся null
 
                 this.Rentals.Add(rental);
             }
@@ -205,7 +198,6 @@ namespace WpfAppUI
             this.SaveChanges();
         }
 
-        // DbSet'ы (без Payments!)
         public virtual DbSet<Bicycle> Bicycles { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<Rental> Rentals { get; set; }
