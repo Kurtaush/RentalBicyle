@@ -46,15 +46,15 @@ namespace WpfAppUI
 
         public void UpdateUI()
         {
-                btnLogin.Visibility = Visibility.Collapsed;
-                btnReg.Visibility = Visibility.Collapsed;
-                textPass.Visibility = Visibility.Collapsed;
-                btnBalance.Visibility = Visibility.Collapsed;
-                btnHistory.Visibility = Visibility.Collapsed;
-                textAbout.Visibility = Visibility.Collapsed;
-                textInfo.Visibility = Visibility.Collapsed;
-                btnExitAcc.Visibility = Visibility.Collapsed;
-                btnInfo.Visibility = Visibility.Collapsed;
+            btnLogin.Visibility = Visibility.Collapsed;
+            btnReg.Visibility = Visibility.Collapsed;
+            textPass.Visibility = Visibility.Collapsed;
+            btnBalance.Visibility = Visibility.Collapsed;
+            btnHistory.Visibility = Visibility.Collapsed;
+            textAbout.Visibility = Visibility.Collapsed;
+            textInfo.Visibility = Visibility.Collapsed;
+            btnExitAcc.Visibility = Visibility.Collapsed;
+            btnInfo.Visibility = Visibility.Collapsed;
 
 
             if (CurrentUser.Identity != null)
@@ -102,7 +102,7 @@ namespace WpfAppUI
 
             }
         }
-        
+
         private void Info_Click(object sender, RoutedEventArgs e)
         {
             InfoWindow wInfo = new InfoWindow();
@@ -111,8 +111,25 @@ namespace WpfAppUI
 
         private void History_Click(object sender, RoutedEventArgs e)
         {
+            // 1. Проверяем авторизацию сразу
+            if (CurrentUser.Identity == null)
+            {
+                MessageBox.Show("Ошибка: вы не авторизованы!");
+                return;
+            }
+            using (var db = new ModelRentalBicycle())
+            {
+                var client = db.Clients.FirstOrDefault(c => c.UserId == CurrentUser.Identity.Id);
 
+                if (client != null)
+                {
+                    var historyWindow = new HistoryWindow(client.Id);
+                    historyWindow.Owner = this;
+                    historyWindow.ShowDialog();
+                }
+            }
         }
+
 
         private void Login_Click(object sender, RoutedEventArgs
 e)

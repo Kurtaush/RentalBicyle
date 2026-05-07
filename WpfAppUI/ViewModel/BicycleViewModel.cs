@@ -15,6 +15,7 @@ namespace WpfAppUI.ViewModel
     {
         private Bicycle _selectedBicycle;
         private int? _stationId;
+
         /// <summary>
         /// выделенный в списке велосипед
         /// </summary>
@@ -33,27 +34,64 @@ namespace WpfAppUI.ViewModel
         /// </summary>
         public ObservableCollection<Bicycle> ListBicycle { get; set; }
 
+        /// <summary>
+        /// Конструктор по умолчанию (без фильтра)
+        /// </summary>
         public BicycleViewModel()
         {
             ListBicycle = new ObservableCollection<Bicycle>();
-            ListBicycle = GetBicycles();
+            GetBicycles();
         }
 
+        /// <summary>
+        /// Конструктор с фильтром по станции
+        /// </summary>
         public BicycleViewModel(int stationId)
         {
             _stationId = stationId;
             ListBicycle = new ObservableCollection<Bicycle>();
-            ListBicycle = GetBicycles();
+            GetBicycles();
         }
 
-        private ObservableCollection<Bicycle> GetBicycles()
+        /// <summary>
+        /// Загрузка велосипедов из БД с опциональной фильтрацией
+        /// </summary>
+        private void GetBicycles()
         {
             using (var context = new ModelRentalBicycle())
             {
-                var query = from b in context.Bicycles
-                            .Include("Station")
-                            .Include("Tariff")
-                            select b;
+                var query = context.Bicycles
+                    .Include("Station")
+                    .Include("Tariff")
+                    .AsQueryable();
+
+                if (_stationId.HasValue)
+                {
+                    query = query.Where(b => b.StationId == _stationId.Value);
+                }
+
+                // Сортировка
+                query = query.OrderBy(b => b.Id);
+
+                ListBicycle.Clear();
+                foreach (var b in query.ToList())
+                {
+                    ListBicycle.Add(b);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Перезагрузка списка велосипедов (с сохранением фильтра)
+        /// </summary>
+        public void Refresh()
+        {
+            using (var context = new ModelRentalBicycle())
+            {
+                var query = context.Bicycles
+                    .Include("Station")
+                    .Include("Tariff")
+                    .AsQueryable();
 
                 if (_stationId.HasValue)
                 {
@@ -62,15 +100,12 @@ namespace WpfAppUI.ViewModel
 
                 query = query.OrderBy(b => b.Id);
 
-                if (query.Count() != 0)
+                ListBicycle.Clear();
+                foreach (var b in query.ToList())
                 {
-                    foreach (var b in query)
-                    {
-                        ListBicycle.Add(b);
-                    }
+                    ListBicycle.Add(b);
                 }
             }
-            return ListBicycle;
         }
 
         #region AddBicycle
@@ -100,8 +135,7 @@ namespace WpfAppUI.ViewModel
                             {
                                 context.Bicycles.Add(newBicycle);
                                 context.SaveChanges();
-                                ListBicycle.Clear();
-                                ListBicycle = GetBicycles();
+                                Refresh();
                             }
                             catch (Exception ex)
                             {
@@ -115,7 +149,9 @@ namespace WpfAppUI.ViewModel
         #endregion
 
         #region EditBicycle
+        /// <summary>
         /// команда редактирования велосипеда
+        /// </summary>
         private RelayCommand _editBicycle;
         public RelayCommand EditBicycle
         {
@@ -144,8 +180,7 @@ namespace WpfAppUI.ViewModel
                                 try
                                 {
                                     context.SaveChanges();
-                                    ListBicycle.Clear();
-                                    ListBicycle = GetBicycles();
+                                    Refresh();
                                 }
                                 catch (Exception ex)
                                 {
@@ -156,8 +191,7 @@ namespace WpfAppUI.ViewModel
                     }
                     else
                     {
-                        ListBicycle.Clear();
-                        ListBicycle = GetBicycles();
+                        Refresh();
                     }
                 }, (obj) => SelectedBicycle != null && ListBicycle.Count > 0));
             }
@@ -165,7 +199,9 @@ namespace WpfAppUI.ViewModel
         #endregion
 
         #region DeleteBicycle
+        /// <summary>
         /// команда удаления велосипеда
+        /// </summary>
         private RelayCommand _deleteBicycle;
         public RelayCommand DeleteBicycle
         {
@@ -180,15 +216,17 @@ namespace WpfAppUI.ViewModel
                         Bicycle bicycle = context.Bicycles.Find(delBicycle.Id);
                         if (bicycle != null)
                         {
-                            MessageBoxResult result = MessageBox.Show("Удалить велосипед: \nМодель: " + bicycle.Model,
+                            MessageBoxResult result = MessageBox.Show(
+                                "Удалить велосипед: \nМодель: " + bicycle.Model,
                                 "Предупреждение", MessageBoxButton.OKCancel);
+
                             if (result == MessageBoxResult.OK)
                             {
                                 try
                                 {
                                     context.Bicycles.Remove(bicycle);
                                     context.SaveChanges();
-                                    ListBicycle.Remove(delBicycle);
+                                    Refresh();
                                 }
                                 catch (Exception ex)
                                 {

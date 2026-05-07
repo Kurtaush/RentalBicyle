@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Список аренд"/>
         <StackPanel Grid.Row="1" Background="#FFD8D8D8">
-            <ListView Height="300" x:Name="lvRole" ItemsSource="{Binding ListBicycle}" SelectedItem="{Binding SelectedRental, Mode=TwoWay}" Background="#FFD3CDCD">
+            <ListView Height="300" x:Name="lvRole" ItemsSource="{Binding ListBicycle}" SelectedItem="{Binding SelectedBicycle, Mode=TwoWay}" Background="#FFD3CDCD">
                 <ListView.View >
                     <GridView>
                         <GridView.Columns>
@@ -26,7 +26,7 @@
                 </ListView.View>
             </ListView>
         </StackPanel>
-        
-        <Button Click="Rental_Click" Grid.Row="2" Width="150" Height="50" Content="Арендовать"/>
+
+        <Button x:Name="btnRent" IsEnabled="{Binding CanUserRent}" Click="Rental_Click" Grid.Row="2" Width="150" Height="50" Content="Арендовать"/>
     </Grid>
 </Window>
