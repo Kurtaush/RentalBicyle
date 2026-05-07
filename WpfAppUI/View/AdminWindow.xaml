@@ -15,6 +15,7 @@
             <MenuItem x:Name="Station" Header="Станции" Click="Station_Click"></MenuItem>
             <MenuItem x:Name="Tariff" Header="Тарифы" Click="Tariff_Click"></MenuItem>
             <MenuItem x:Name="User" Header="Пользователи" Click="User_Click"></MenuItem>
+            <MenuItem x:Name="Stat" Header="Статистика" Click="Stat_Click"></MenuItem>
             <MenuItem x:Name="Exit" Header="Выход" Click="Exit_Click"></MenuItem>
         </Menu>
     </Grid>

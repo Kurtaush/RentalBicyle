@@ -18,7 +18,7 @@
                 <ListView.View >
                     <GridView>
                         <GridView.Columns>
-                            <GridViewColumn Width="100" Header="Модель велика" DisplayMemberBinding="{Binding Model}"/>
+                            <GridViewColumn Width="123" Header="Модель велосипеда" DisplayMemberBinding="{Binding Model}"/>
                             <GridViewColumn Width="100" Header="Статус" DisplayMemberBinding="{Binding Status}"/>
                             <GridViewColumn Width="50" Header="Тариф" DisplayMemberBinding="{Binding Tariff.PricePerHour}"/>
                         </GridView.Columns>

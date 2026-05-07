@@ -55,6 +55,12 @@ namespace WpfAppUI.View
                     if (user.Role == "admin")
                     {
                         AdminWindow wAdm = new AdminWindow();
+                        wAdm.Closed += (sender1, args) =>
+                        {
+                            Application.Current.MainWindow.Show();
+                            CurrentUser.Identity = null;
+                            ((MainWindow)Application.Current.MainWindow).UpdateUI();
+                        };
                         wAdm.Show();
                         Application.Current.MainWindow.Hide();
                     }

@@ -46,6 +46,16 @@ namespace WpfAppUI
 
         public void UpdateUI()
         {
+                btnLogin.Visibility = Visibility.Collapsed;
+                btnReg.Visibility = Visibility.Collapsed;
+                textPass.Visibility = Visibility.Collapsed;
+                btnBalance.Visibility = Visibility.Collapsed;
+                btnHistory.Visibility = Visibility.Collapsed;
+                textAbout.Visibility = Visibility.Collapsed;
+                textInfo.Visibility = Visibility.Collapsed;
+                btnExitAcc.Visibility = Visibility.Collapsed;
+                btnInfo.Visibility = Visibility.Collapsed;
+                btnRentals.Visibility = Visibility.Collapsed;
             btnLogin.Visibility = Visibility.Collapsed;
             btnReg.Visibility = Visibility.Collapsed;
             textPass.Visibility = Visibility.Collapsed;
@@ -55,7 +65,6 @@ namespace WpfAppUI
             textInfo.Visibility = Visibility.Collapsed;
             btnExitAcc.Visibility = Visibility.Collapsed;
             btnInfo.Visibility = Visibility.Collapsed;
-
 
             if (CurrentUser.Identity != null)
             {
@@ -68,6 +77,11 @@ namespace WpfAppUI
                     btnExitAcc.Visibility = Visibility.Visible;
                     btnInfo.Visibility = Visibility.Visible;
                     LoadName();
+                }
+                if (CurrentUser.Identity.Role == "operator")
+                {
+                    btnExitAcc.Visibility = Visibility.Visible;
+                    btnRentals.Visibility = Visibility.Visible;
                 }
             }
             else
@@ -148,11 +162,51 @@ e)
         
         private void Client_Click(object sender, RoutedEventArgs e)
         {
-            Button clickedButton = (Button)sender;
-            string stationId = clickedButton.Tag.ToString();
-            ClientWindow wClient = new ClientWindow(stationId);
-            wClient.Show();
+            // Проверяем, что пользователь авторизован
+            if (CurrentUser.Identity == null)
+            {
+                MessageBox.Show("Необходимо авторизоваться!",
+                    "Доступ запрещён", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (CurrentUser.Identity.Role == "client")
+            {
+                using (var db = new ModelRentalBicycle())
+                {
+                    var client = db.Clients.FirstOrDefault(c => c.UserId == CurrentUser.Identity.Id);
+                    if (client != null)
+                    {
+                        var activeRental = db.Rentals.FirstOrDefault(r => r.ClientId == client.Id && r.EndTime == null);
+                        if (activeRental != null)
+                        {
+                            MessageBox.Show("У вас уже есть активная аренда. Верните велосипед перед тем, как взять новый.",
+                                "Аренда уже активна", MessageBoxButton.OK, MessageBoxImage.Information);
+                            return;
+                        }
+                    }
+                }
+
+                // Если все проверки пройдены — открываем окно
+                Button clickedButton = (Button)sender;
+                string stationId = clickedButton.Tag.ToString();
+                ClientWindow wClient = new ClientWindow(stationId);
+                wClient.Show();
+            }
+            
+            if (CurrentUser.Identity.Role == "operator")
+            {
+                Button clickedButton = (Button)sender;
+                string stationId = clickedButton.Tag.ToString();
+                OperatorWindow wOperator = new OperatorWindow(int.Parse(stationId));
+                wOperator.Show();
+            }
         }
 
+        private void Rentals_Click(object sender, RoutedEventArgs e)
+        {
+            ActiveRentalsWindow wActiveRentals = new ActiveRentalsWindow();
+            wActiveRentals.Show();
+        }
     }
 }

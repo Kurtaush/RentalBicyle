@@ -6,25 +6,25 @@
         xmlns:local="clr-namespace:WpfAppUI.View"
         mc:Ignorable="d"
         
-        Title="Личные данные" Height="330" Width="330">
+        Title="Личные данные" Height="160" Width="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120"/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="Имя:" FontSize="20"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
-        <TextBlock Grid.Row="1" Text="Номер:" FontSize="20"  Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40,0,0,0"/>
+        <TextBlock Text="Имя:" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
+        <TextBlock Grid.Row="1" Text="Номер:" Grid.Column="0" Style="{StaticResource crudTextBlock}"/>
 
-        <TextBox x:Name="NameText" Grid.Row="0" Grid.Column="1" Height="25" Margin="10,30,10,30" AutomationProperties.Name="LoginText"/>
-        <TextBox x:Name="PhoneText" Grid.Row="1" Grid.Column="1" Height="25" Margin="10,30,10,30" AutomationProperties.Name="LoginText"/>
+        <TextBox x:Name="NameText" MaxLength="45" Grid.Row="0" Grid.Column="1" Style="{StaticResource crudTextBox}" AutomationProperties.Name="LoginText"/>
+        <TextBox x:Name="PhoneText" MaxLength="30" Grid.Row="1" Grid.Column="1" Style="{StaticResource crudTextBox}" AutomationProperties.Name="LoginText"/>
 
-        <Button Click="SaveInfo_Click" Cursor="Hand" Grid.Row="2" Grid.ColumnSpan="2" Width="140" Height="50" Content="Сохранить" FontSize="20"/>
+        <Button Click="SaveInfo_Click" Cursor="Hand" Grid.Row="2" Grid.ColumnSpan="2" Width="80" Height="25" Content="Сохранить"/>
     </Grid>
 </Window>

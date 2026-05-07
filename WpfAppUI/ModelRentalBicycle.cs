@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using WpfAppUI.Model;
-using System.Text;
 using System.Security.Cryptography;
+using System.Text;
+using WpfAppUI.Model;
 
 namespace WpfAppUI
 {
@@ -154,22 +155,22 @@ namespace WpfAppUI
             var freeBicycles = this.Bicycles.Where(b => b.Status == "free").ToList();
             var rentedBicycles = this.Bicycles.Where(b => b.Status == "rented").ToList();
 
-            for (int i = 0; i < 20; i++)
+            // Определяем, сколько активных аренд можно создать (не больше, чем арендованных велосипедов)
+            int activeRentalsCount = Math.Min(5, rentedBicycles.Count);
+
+            // Создаём активные аренды на разные велосипеды
+            var shuffledRentedBikes = rentedBicycles.OrderBy(b => rnd.Next()).Take(activeRentalsCount).ToList();
+            var usedClients = new HashSet<int>();
+
+            for (int i = 0; i < activeRentalsCount; i++)
             {
-                var client = clientsList[rnd.Next(clientsList.Count)];
+                // Каждому клиенту только одна активная аренда
+                var client = clientsList.FirstOrDefault(c => !usedClients.Contains(c.Id));
+                if (client == null) break;
+                usedClients.Add(client.Id);
+
+                var bicycle = shuffledRentedBikes[i];
                 var startStation = stations[rnd.Next(stations.Length)];
-                var endStation = stations[rnd.Next(stations.Length)];
-
-                Bicycle bicycle;
-                if (i < 5)
-                {
-                    bicycle = rentedBicycles[rnd.Next(rentedBicycles.Count)];
-                }
-                else
-                {
-                    bicycle = freeBicycles[rnd.Next(freeBicycles.Count)];
-                }
-
                 var startTime = DateTime.Now.AddDays(-rnd.Next(1, 7)).AddHours(-rnd.Next(0, 24));
                 var tariff = this.Tariffs.Find(bicycle.TariffId) ?? tariff1;
 
@@ -182,15 +183,51 @@ namespace WpfAppUI
                     TariffId = tariff.Id
                 };
 
-                if (i >= 5)
+                this.Rentals.Add(rental);
+            }
+
+            // Оставшиеся аренды (до 20) делаем завершёнными
+            int completedRentalsCount = 20 - activeRentalsCount;
+
+            for (int i = 0; i < completedRentalsCount; i++)
+            {
+                var client = clientsList[rnd.Next(clientsList.Count)];
+                var startStation = stations[rnd.Next(stations.Length)];
+                var endStation = stations[rnd.Next(stations.Length)];
+
+                // Для завершённых аренд используем свободные велосипеды (или арендованные, если свободных не хватает)
+                Bicycle bicycle;
+                if (freeBicycles.Count > 0)
                 {
-                    var endTime = startTime.AddHours(rnd.Next(1, 72));
-                    var hours = Math.Ceiling((endTime - startTime).TotalHours);
-                    rental.EndTime = endTime;
-                    rental.EndStationId = endStation.Id;
-                    rental.Amount = (decimal)hours * tariff.PricePerHour;
-                    rental.PaidAt = endTime.AddMinutes(rnd.Next(5, 60));
+                    bicycle = freeBicycles[rnd.Next(freeBicycles.Count)];
                 }
+                else
+                {
+                    // Если нет свободных, берём случайный (но не тот, что в активных арендах)
+                    var activeBicycleIds = shuffledRentedBikes.Select(b => b.Id).ToHashSet();
+                    var availableBikes = this.Bicycles.ToList().Where(b => !activeBicycleIds.Contains(b.Id)).ToList();
+                    if (availableBikes.Count == 0) break;
+                    bicycle = availableBikes[rnd.Next(availableBikes.Count)];
+                }
+
+                var startTime = DateTime.Now.AddDays(-rnd.Next(1, 7)).AddHours(-rnd.Next(0, 24));
+                var tariff = this.Tariffs.Find(bicycle.TariffId) ?? tariff1;
+
+                var endTime = startTime.AddHours(rnd.Next(1, 72));
+                var hours = Math.Ceiling((endTime - startTime).TotalHours);
+
+                var rental = new Rental
+                {
+                    ClientId = client.Id,
+                    BicycleId = bicycle.Id,
+                    StartStationId = startStation.Id,
+                    StartTime = startTime,
+                    TariffId = tariff.Id,
+                    EndTime = endTime,
+                    EndStationId = endStation.Id,
+                    Amount = (decimal)hours * tariff.PricePerHour,
+                    PaidAt = endTime.AddMinutes(rnd.Next(5, 60))
+                };
 
                 this.Rentals.Add(rental);
             }

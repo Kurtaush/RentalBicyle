@@ -69,5 +69,11 @@ namespace WpfAppUI
             CurrentUser.Identity = null;
             ((MainWindow)Application.Current.MainWindow).UpdateUI();
         }
+
+        private void Stat_Click(object sender, RoutedEventArgs e)
+        {
+            RoutePopularityWindow wRoutePopularity = new RoutePopularityWindow();
+            wRoutePopularity.Show();
+        }
     }
 }
