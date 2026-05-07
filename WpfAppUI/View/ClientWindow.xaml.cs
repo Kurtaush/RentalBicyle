@@ -55,6 +55,7 @@ namespace WpfAppUI
 
         private void Rental_Click(object sender, RoutedEventArgs e)
         {
+
             var user = App.CurrentUser.Identity;
             if (user == null)
             {
@@ -88,6 +89,14 @@ namespace WpfAppUI
                     return;
                 }
 
+                var bikeInDb = db.Bicycles.Find(selectedBike.Id);
+
+                if (bikeInDb.Status == "rented")
+                {
+                    MessageBox.Show("Данные велик уже Арендован, выберите другой!");
+                    return;
+                }
+
                 // 4. Создание аренды
                 var rental = new Rental
                 {
@@ -101,11 +110,13 @@ namespace WpfAppUI
                 db.Rentals.Add(rental);
 
                 // 5. Меняем статус велосипеда в БД
-                var bikeInDb = db.Bicycles.Find(selectedBike.Id);
+
+
                 if (bikeInDb != null)
                 {
                     bikeInDb.Status = "rented";
                 }
+
 
                 db.SaveChanges();
 

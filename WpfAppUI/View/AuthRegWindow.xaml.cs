@@ -71,6 +71,24 @@ namespace WpfAppUI.View
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(RegLoginText.Text))
+            {
+                MessageBox.Show("Введите логин");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(RegPassText.Password))
+            {
+                MessageBox.Show("Введите пароль");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(RegPassRepeatText.Password))
+            {
+                MessageBox.Show("Повторите пароль");
+                return;
+            }
+
             if (RegPassText.Password != RegPassRepeatText.Password)
             {
                 MessageBox.Show("Пароли не совпадают!");

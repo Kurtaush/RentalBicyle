@@ -30,6 +30,11 @@ namespace WpfAppUI.View
 
         private void SaveInfo_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(NameText.Text))
+            {
+                MessageBox.Show("Введите Имя");
+                return;
+            }
             using (var db = new ModelRentalBicycle())
             {
                 var currentClient = db.Clients.FirstOrDefault(u => u.UserId == CurrentUser.Identity.Id);
