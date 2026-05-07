@@ -110,10 +110,23 @@ namespace WpfAppUI
                 var client = db.Clients.FirstOrDefault(c => c.UserId == CurrentUser.Identity.Id);
                 if (client != null)
                 {
-                    decimal balance = client.Balance;
-                    MessageBox.Show($"Ваш баланс равен: {balance}");
-                }
+                    TopUpBalanceWindow wTopUp = new TopUpBalanceWindow(client.Id);
+                    wTopUp.Owner = this;
+                    wTopUp.ShowDialog();
 
+                    // Обновляем отображение баланса после закрытия окна
+                    if (wTopUp.DialogResult == true)
+                    {
+                        LoadName(); // обновляет информацию о клиенте (баланс)
+                        MessageBox.Show($"Текущий баланс: {wTopUp.NewBalance:N2} руб.",
+                            "Баланс", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Клиент не найден!", "Ошибка",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
         }
 

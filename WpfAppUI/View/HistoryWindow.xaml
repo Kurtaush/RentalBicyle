@@ -54,7 +54,7 @@
                     HorizontalAlignment="Center" 
                     VerticalAlignment="Center">
 
-            <Button Content="Отменить аренду" 
+            <Button Content="Завершить аренду" 
                     Command="{Binding CancelRental}"
                     Width="150" Height="35"
                     Margin="10,0"

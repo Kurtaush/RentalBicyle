@@ -37,7 +37,7 @@ namespace WpfAppUI.ViewModel
         }
 
         /// <summary>
-        /// Команда отмены аренды (удаление записи и освобождение велосипеда)
+        /// Команда отмены аренды (завершение аренды, освобождение велосипеда и списание средств)
         /// </summary>
         private RelayCommand _cancelRental;
         public RelayCommand CancelRental
@@ -46,7 +46,7 @@ namespace WpfAppUI.ViewModel
             {
                 return _cancelRental ?? (_cancelRental = new RelayCommand(obj =>
                 {
-                    var result = MessageBox.Show("Вы действительно хотите отменить аренду? Запись будет удалена, а велосипед освобожден.",
+                    var result = MessageBox.Show("Вы действительно хотите завершить аренду?",
                         "Подтверждение", MessageBoxButton.YesNo);
 
                     if (result != MessageBoxResult.Yes) return;
@@ -55,26 +55,74 @@ namespace WpfAppUI.ViewModel
                     {
                         try
                         {
-                            // Загружаем аренду вместе с данными велосипеда
-                            var rental = db.Rentals.Include(r => r.Bicycle)
-                                                   .FirstOrDefault(r => r.Id == SelectedRental.Id);
+                            // Загружаем аренду вместе с данными велосипеда, тарифа, клиента и станций
+                            var rental = db.Rentals
+                                .Include(r => r.Bicycle)
+                                .Include(r => r.Tariff)
+                                .Include(r => r.Client)
+                                .FirstOrDefault(r => r.Id == SelectedRental.Id);
 
                             if (rental != null)
                             {
-                                // 1. Меняем статус велосипеда на Free (или Свободен)
-                                if (rental.Bicycle != null)
+                                // 1. Устанавливаем время окончания
+                                rental.EndTime = DateTime.Now;
+
+                                // 2. Рассчитываем стоимость по тарифу
+                                if (rental.Tariff != null && rental.StartTime != null)
                                 {
-                                    rental.Bicycle.Status = "Free";
+                                    var hours = Math.Ceiling((rental.EndTime.Value - rental.StartTime).TotalHours);
+                                    rental.Amount = (decimal)hours * rental.Tariff.PricePerHour;
                                 }
 
-                                // 2. Удаляем запись об аренде
-                                db.Rentals.Remove(rental);
+                                // 3. Устанавливаем станцию возврата (ту же, где начали)
+                                rental.EndStationId = rental.StartStationId;
+
+                                // 4. Списываем средства с баланса клиента
+                                if (rental.Client != null && rental.Amount.HasValue)
+                                {
+                                    var client = rental.Client;
+                                    decimal totalAmount = rental.Amount.Value;
+
+                                    if (client.Balance >= totalAmount)
+                                    {
+                                        // Полная оплата — снимаем всю сумму
+                                        client.Balance -= totalAmount;
+                                        rental.PaidAt = DateTime.Now;
+                                    }
+                                    else
+                                    {
+                                        // Частичная оплата — снимаем остаток баланса
+                                        decimal availableBalance = client.Balance;
+                                        client.Balance = 0;
+                                        rental.PaidAt = null; // аренда остаётся неоплаченной
+
+                                        MessageBox.Show(
+                                            $"Недостаточно средств на балансе!\n" +
+                                            $"Сумма аренды: {totalAmount:N2} руб.\n" +
+                                            $"Списано: {availableBalance:N2} руб.\n" +
+                                            $"Остаток долга: {(totalAmount - availableBalance):N2} руб.\n" +
+                                            $"Аренда завершена, но осталась неоплаченной.",
+                                            "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Warning);
+                                    }
+                                }
+                                    
+                                // 5. Меняем статус велосипеда на free и возвращаем на станцию
+                                if (rental.Bicycle != null)
+                                {
+                                    rental.Bicycle.Status = "free";
+                                    rental.Bicycle.StationId = rental.EndStationId;
+                                }
 
                                 db.SaveChanges();
 
-                                // 3. Обновляем данные в интерфейсе
+                                // 6. Обновляем данные в интерфейсе
                                 Refresh();
-                                MessageBox.Show("Аренда успешно отменена!");
+
+                                if (rental.PaidAt != null)
+                                {
+                                    MessageBox.Show($"Аренда завершена!\nСписано с баланса: {rental.Amount:N2} руб.",
+                                        "Операция выполнена", MessageBoxButton.OK, MessageBoxImage.Information);
+                                }
                             }
                         }
                         catch (Exception ex)
@@ -103,7 +151,8 @@ namespace WpfAppUI.ViewModel
                     query = query.Where(r => r.ClientId == _clientId.Value);
                 }
 
-                var list = query.OrderByDescending(r => r.StartTime).ToList();
+                // Сортировка по ID по возрастанию
+                var list = query.OrderBy(r => r.Id).ToList();
 
                 ListRental.Clear();
                 foreach (var r in list)
